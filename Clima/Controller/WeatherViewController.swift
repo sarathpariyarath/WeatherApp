@@ -42,7 +42,7 @@ class WeatherViewController: UIViewController,UITextFieldDelegate {
         if searchTextField.text != "" {
             return true
         } else {
-            searchTextField.placeholder = "enter something"
+            searchTextField.placeholder = "Enter city name"
             return false
         }
     }
@@ -55,7 +55,7 @@ extension WeatherViewController: WeatherManagerDelegate {
         let icon = weather.conditionName
         print(icon)
         DispatchQueue.main.async {
-            self.cityLabel.text = weather.cityName
+            self.cityLabel.text = "📍 \(weather.cityName)"
             self.temperatureLabel.text = weather.temperatureString
             self.conditionImageView.image = UIImage(systemName: icon)
         }
