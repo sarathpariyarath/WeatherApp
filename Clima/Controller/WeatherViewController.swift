@@ -1,8 +1,3 @@
-//
-//  ViewController.swift
-//  Clima
-//
-//  Created by Sarath P on 13/11/21.
 
 
 import UIKit
@@ -58,6 +53,17 @@ extension WeatherViewController: WeatherManagerDelegate {
             self.cityLabel.text = "📍 \(weather.cityName)"
             self.temperatureLabel.text = weather.temperatureString
             self.conditionImageView.image = UIImage(systemName: icon)
+        }
+    }
+    func errorHappened(error: Bool) {
+        if error {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Alert", message: "City not found", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+            
         }
     }
     

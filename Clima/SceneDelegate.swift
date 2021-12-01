@@ -1,7 +1,3 @@
-//
-//  SceneDelegate.swift
-//  
-//  Created by Sarath P on 13/11/21.
 
 import UIKit
 

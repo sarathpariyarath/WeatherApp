@@ -1,16 +1,10 @@
-//
-//  WeatherManager.swift
-//  
-//
-//  Created by Sarath P on 13/11/21.
-//  
-//
 
 import Foundation
 import UIKit
 
 protocol WeatherManagerDelegate {
     func didUpdateWeather(weather: WeatherModel)
+    func errorHappened(error: Bool)
 }
 
 struct WeatherManager {
@@ -67,6 +61,7 @@ struct WeatherManager {
             let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp)
             return weather
         } catch {
+            delegate?.errorHappened(error: true)
             print("Error")
             return nil
         }

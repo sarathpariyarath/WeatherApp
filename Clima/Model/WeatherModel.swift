@@ -1,10 +1,4 @@
-//
-//  WeatherModel.swift
-//  Clima
-//
-//  Created by Sarath P on 14/11/21.
-//  Copyright © 2021 App Brewery. All rights reserved.
-//
+
 
 import Foundation
 
@@ -12,7 +6,6 @@ struct WeatherModel {
     let conditionId: Int
     let cityName: String
     let temperature: Double
-    
     var temperatureString: String {
         return String(format: "%.1f", temperature)
     }
