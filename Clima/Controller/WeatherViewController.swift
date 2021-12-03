@@ -2,7 +2,7 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController,UITextFieldDelegate {
+class WeatherViewController: UIViewController {
 
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -21,26 +21,7 @@ class WeatherViewController: UIViewController,UITextFieldDelegate {
         searchTextField.endEditing(true)
         print(searchTextField.text!)
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchTextField.endEditing(true)
-        print(searchTextField.text!)
-        return true
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        //use textfield.text to get weather of the city
-        if let city = searchTextField.text {
-            weatherManager.fetchWeather(cityName: city)
-        }
-        searchTextField.text = ""
-    }
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if searchTextField.text != "" {
-            return true
-        } else {
-            searchTextField.placeholder = "Enter city name"
-            return false
-        }
-    }
+    
     
 }
 
@@ -68,4 +49,27 @@ extension WeatherViewController: WeatherManagerDelegate {
     }
     
     
+}
+
+extension WeatherViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextField.endEditing(true)
+        print(searchTextField.text!)
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        //use textfield.text to get weather of the city
+        if let city = searchTextField.text {
+            weatherManager.fetchWeather(cityName: city)
+        }
+        searchTextField.text = ""
+    }
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if searchTextField.text != "" {
+            return true
+        } else {
+            searchTextField.placeholder = "Enter city name"
+            return false
+        }
+    }
 }
